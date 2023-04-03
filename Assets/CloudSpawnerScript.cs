@@ -7,16 +7,19 @@ public class CloudSpawnerScript : MonoBehaviour
     public GameObject cloud;
 
     private int CurrentClouds = 0;
-    private const int MaxClouds = 5;
+    private const int MaxClouds = 15;
 
     // New cloud will be spawned between this range
-    private float minSpawnWait = 1.0f;
-    private float maxSpawnWait = 3.0f;
+    private float minSpawnWait = 2.0f;
+    private float maxSpawnWait = 4.0f;
 
     // Time until next cloud is spawned
     private float currentSpawnWait = 0.0f;
 
     private float timer = 0.0f;
+
+    private float lowestPoint = -4.0f;
+    private float highestPoint = 13.0f;
 
     void Start()
     {
@@ -48,7 +51,15 @@ public class CloudSpawnerScript : MonoBehaviour
     void SpawnCloud()
     {
         CurrentClouds++;
-        Instantiate(cloud, new Vector3(transform.position.x, 0, 0), transform.rotation);
+
+        float yPos = Random.Range(lowestPoint, highestPoint);
+
+        Instantiate(cloud, new Vector3(transform.position.x, yPos, 0), transform.rotation);
+    }
+
+    public void CloudHasDied()
+    {
+        CurrentClouds--;
     }
 
 }

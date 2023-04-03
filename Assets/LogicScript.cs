@@ -15,6 +15,8 @@ public class LogicScript : MonoBehaviour
 
     public GameObject gameOverScreen;
 
+    public GameObject beginScreen;
+
     [ContextMenu("Increase Score")]
     public void addScore(int scoreToAdd)
     {
@@ -31,6 +33,14 @@ public class LogicScript : MonoBehaviour
     public void gameOver()
     {
         gameOverScreen.SetActive(true);
+    }
+
+    public void beginGame()
+    {
+        beginScreen.SetActive(false);
+
+
+
     }
 
 
